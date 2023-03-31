@@ -40,15 +40,6 @@ class Subject(models.Model):
     def __str__(self):
         return self.name
 
-class Grade(models.Model):
-    name = models.CharField(max_length=30, verbose_name='Оценка')
-    student: Student =models.ForeignKey(Student, on_delete=models.PROTECT, related_name='Ученик')
-    teacher: Teacher =models.ForeignKey(Teacher , on_delete=models.PROTECT, related_name='Учитель')
-    grade_value = models.IntegerField()
-    date = models.DateTimeField(auto_now=True)
-    
-    def __str__(self):
-        return self.name
 
 
 
