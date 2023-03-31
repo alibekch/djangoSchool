@@ -1,5 +1,5 @@
 from django.db import models
-
+from main.models import Subject, School
 # Create your models here.
 class Teacher(models.Model):
     first_name = models.CharField()
