@@ -5,10 +5,13 @@ from employee.models import Teacher
 
 class Klass(models.Model):
     number = models.IntegerField()
-    letter = models.CharField()
+    letter = models.CharField(max_length=1)
     school_year = models.DateField()
     school = models.ForeignKey(School, on_delete=models.CASCADE)
     subjects = models.ManyToManyField(Subject)
+
+    def __str__(self):
+        return f'Class name: {self.number} {self.letter}'
 
 
 class Student(models.Model):
@@ -17,6 +20,9 @@ class Student(models.Model):
     dob = models.DateField
     class_name = models.ForeignKey(Klass, on_delete=models.CASCADE)
 
+    def __str__(self):
+        return f'First name: {self.first_name} Last name: {self.last_name}'
+
 
 class Lesson(models.Model):
     lesson_name = models.CharField(max_length=32)
@@ -24,6 +30,9 @@ class Lesson(models.Model):
     teacher = models.ForeignKey(Teacher, on_delete=models.CASCADE)
     start_time = models.DateField()
     end_time = models.DateField()
+
+    def __str__(self):
+        return f'Lesson name: {self.lesson_name}'
 
 
 class Grade(models.Model):
