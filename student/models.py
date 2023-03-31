@@ -5,7 +5,7 @@ from employee.models import Teacher
 
 class Klass(models.Model):
     number = models.IntegerField()
-    letter = models.CharField()
+    letter = models.CharField(max_length=1)
     school_year = models.DateField()
     school = models.ForeignKey(School, on_delete=models.CASCADE)
     subjects = models.ManyToManyField(Subject)
